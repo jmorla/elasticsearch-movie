@@ -1,0 +1,85 @@
+<div class="card">
+  <div class="card-header">
+    Search
+  </div>
+  <div class="card-body">
+    <form [formGroup]="searchForm">
+      <div class="form-group">
+        <label for="name">Movie name</label>
+        <input id="name" type="text" class="form-control" placeholder="Movie name">
+      </div>
+      <div class="form-group">
+        <label for="director">Director</label>
+        <select id="director" class="form-control">
+          <option>Select Director</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="budget">Production Budget</label>
+        <div class="form-check">
+          <input
+          class="form-check-input"
+          formControlName="budgetOperator"
+          type="radio"
+          name="budgetOperator"
+          value="">
+          <label class="form-check-label" for="budgetOperator">
+            None
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+          class="form-check-input"
+          formControlName="budgetOperator"
+          type="radio"
+          name="budgetOperator"
+          value="lt">
+          <label class="form-check-label" for="budgetOperator">
+            Less than
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+          class="form-check-input"
+          formControlName="budgetOperator"
+          type="radio"
+          name="budgetOperator"
+          value="gt">
+          <label class="form-check-label" for="budgetOperator">
+            More than
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+          class="form-check-input"
+          formControlName="budgetOperator"
+          type="radio"
+          name="budgetOperator"
+          value="eq">
+          <label class="form-check-label" for="budgetOperator">
+            Equal to
+          </label>
+        </div>
+        <div *ngIf="searchForm.get('budgetOperator').value !== ''">
+          <input type="range" class="form-control-range" id="budget">
+          <label for="budget">USD$ 100,000.00</label>
+        </div>
+        <div class="form-check" *ngIf="searchForm.get('budgetOperator').value !== ''">
+          <input
+          class="form-check-input"
+          formControlName="budgetOperator"
+          type="radio"
+          name="budgetOperator"
+          value="bt">
+          <label class="form-check-label" for="budgetOperator" >
+            Between
+          </label>
+        </div>
+        <div *ngIf="searchForm.get('budgetOperator').value === 'bt'">
+          <input type="range" class="form-control-range" id="budget">
+          <label for="budget">USD$ 100,000.00</label>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

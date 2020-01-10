@@ -1,0 +1,39 @@
+<div class="card h-100">
+  <div class="card-body">
+    <div>
+      <strong>Title: </strong>
+      <span>{{ movie.Title }}</span>
+    </div>
+    <div>
+      <strong>Director: </strong>
+      <span>{{ movie.Director }}</span>
+    </div>
+    <div>
+      <strong>Distributor: </strong>
+      <span>{{ movie.Distributor }}</span>
+    </div>
+    <div>
+      <strong>Release Date: </strong>
+      <span>{{ movie.Release_Date }}</span>
+    </div>
+    <div>
+      <strong>Running Time: </strong>
+      <span>{{ movie.Running_Time_min }} min</span>
+    </div>
+    <div>
+      <strong>Production Budget: </strong>
+      <span>USD$ {{ movie.Production_Budget | number }}</span>
+    </div>
+    <div>
+      <strong>Distributor: </strong>
+      <span>{{ movie.Distributor }}</span>
+    </div>
+    <div>
+      <strong>Genre Type: </strong>
+      <span>{{ movie.Creative_Type }}</span>
+    </div>
+  </div>
+  <div class="card-footer">
+    <span class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+  </div>
+</div>
