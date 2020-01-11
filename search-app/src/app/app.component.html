@@ -35,19 +35,16 @@
           <div class="col-lg-4 col-md-12 mb-4" *ngFor="let movie of movies"  [@simpleFadeAnimation]>
             <app-movie-card [movie]="movie"></app-movie-card>
           </div>
-          <div class="col-lg-4 col-md-12" *ngIf="!loading" [@simpleFadeAnimation]>
+          <div class="col-lg-4 col-md-12" *ngIf="loading" [@simpleFadeAnimation]>
               <app-movie-card-loading></app-movie-card-loading>
           </div>
-          <div class="col-lg-4 col-md-12" *ngIf="!loading" [@simpleFadeAnimation]>
+          <div class="col-lg-4 col-md-12" *ngIf="loading" [@simpleFadeAnimation]>
               <app-movie-card-loading></app-movie-card-loading>
           </div>
-          <div class="col-lg-4 col-md-12" *ngIf="!loading" [@simpleFadeAnimation]>
+          <div class="col-lg-4 col-md-12" *ngIf="loading" [@simpleFadeAnimation]>
               <app-movie-card-loading></app-movie-card-loading>
           </div>
-          <div class="col-lg-4 col-md-12" *ngIf="!loading" [@simpleFadeAnimation]>
-              <app-movie-card-loading></app-movie-card-loading>
-          </div>
-          <div class="col-md-12" *ngIf="!loading && !movies">
+          <div class="col-md-12" *ngIf="!loading && notFound" [@simpleFadeAnimation]>
               <app-empty-search 
               [title]="'No results were found'" 
               [description]="'Use the search panel to filter your favorite movies'">

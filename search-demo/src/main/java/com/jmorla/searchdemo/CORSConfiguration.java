@@ -18,8 +18,7 @@ public class CORSConfiguration {
                         .allowedHeaders("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD")
                         .maxAge(-1)
-                        .allowCredentials(false)
-                ;
+                        .allowCredentials(false);
             }
         };
     }

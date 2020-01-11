@@ -21,23 +21,28 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
   ]
 })
 export class AppComponent implements OnInit {
-  movies: Movie[] = [];
+  movies: Movie[];
   loading: boolean;
+  notFound: boolean;
 
   constructor (
     private movieService: MovieService
   ) {}
 
   ngOnInit() {
-    this.loading = false;
-    this.movieService.getAllMovies({page: 0, size: 10})
+    this.loading = true;
+    this.movieService.getAllMovies({page: 0, size: 5})
     .subscribe({
       next: (movies) => {
         setTimeout(() => {
+          this.loading = false;
           this.movies = movies
-          this.loading = true
-        }, 2000)
-      }
-    });
+          this.notFound = false;
+        }, 500)
+      },
+      error: () => {
+        setTimeout(() => { this.loading = false }, 400);
+        setTimeout(() => { this.notFound = true }, 1100);
+    }});
   }
 }
