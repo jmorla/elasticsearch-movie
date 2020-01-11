@@ -2,7 +2,7 @@
 //  body {
 //   padding-top: 89px;
 // }
-
+@import "../node_modules/placeholder-loading/src/scss/placeholder-loading.scss";
 
 .page-container {
   position: relative;
@@ -11,7 +11,7 @@
 }
 
 .content-wrap {
-  padding-bottom: 2.5rem;    /* Footer height */
+  padding-bottom: 8rem;    /* Footer height */
 }
 
 .footer {
@@ -19,4 +19,20 @@
   bottom: 0;
   width: 100%;
   height: 2.5rem;            /* Footer height */
+}
+
+
+.ph-col-1,
+.ph-col-2,
+.ph-col-3,
+.ph-col-4,
+.ph-col-5,
+.ph-col-6,
+.ph-col-7,
+.ph-col-8,
+.ph-col-9,
+.ph-col-10,
+.ph-col-11,
+.ph-col-12 {
+  border-radius: 10px;
 }

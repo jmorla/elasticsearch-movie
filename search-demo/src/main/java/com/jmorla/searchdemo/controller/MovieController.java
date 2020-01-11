@@ -27,8 +27,8 @@ public class MovieController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Movie>> getAllMovies(Pageable pageable, Movie movie) {
-        List<Movie> movies = this.movieSearchRepository.findAllByTitle(pageable, movie.getTitle())
+    public ResponseEntity<List<Movie>> getAllMovies(Pageable pageable) {
+        List<Movie> movies = this.movieSearchRepository.findAll(pageable)
                 .getContent();
         return ResponseEntity.ok(movies);
     }

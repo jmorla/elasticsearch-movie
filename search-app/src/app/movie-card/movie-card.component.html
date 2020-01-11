@@ -25,6 +25,10 @@
       <span>USD$ {{ movie.Production_Budget | number }}</span>
     </div>
     <div>
+      <strong>Wordwide Gross: </strong>
+      <span>USD$ {{ movie.Worldwide_Gross | number }}</span>
+    </div>
+    <div>
       <strong>Distributor: </strong>
       <span>{{ movie.Distributor }}</span>
     </div>
@@ -34,6 +38,15 @@
     </div>
   </div>
   <div class="card-footer">
-    <span class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+    <span class="text-muted">
+      IMDB Rating 
+      <span *ngFor="let star of getStars()">
+        <i *ngIf="star">&#9733;</i>
+        <i *ngIf="!star">&#9734;</i>
+      </span>
+      <br>
+      Tomatazos {{ movie.Rotten_Tomatoes_Rating ? movie.Rotten_Tomatoes_Rating + '%' : 'none'}}
+    </span>
+    
   </div>
 </div>
