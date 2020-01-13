@@ -2,6 +2,8 @@ package com.jmorla.searchdemo.service;
 
 import com.jmorla.searchdemo.controller.dto.MovieSearchRequest;
 import com.jmorla.searchdemo.domain.Movie;
+import org.elasticsearch.search.aggregations.Aggregation;
+import org.elasticsearch.search.aggregations.Aggregations;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +27,24 @@ public class MovieSearchServiceTest {
         List<Movie> movies = movieSearchService.searchAllMoviesMatchCriteria(request, PageRequest.of(0, 10));
         Assertions.assertFalse(movies.isEmpty());
         System.out.println(movies);
+    }
+
+
+    @Test
+    public void mustReturnAllDirectors() {
+        List<String> directors = movieSearchService.getAllDirectors();
+        Assertions.assertFalse(directors.isEmpty());
+    }
+
+    @Test
+    public void mustReturnAllDistributors() {
+        List<String> data = movieSearchService.getAllDistributor();
+        Assertions.assertFalse(data.isEmpty());
+    }
+
+    @Test
+    public void mustReturnAllType() {
+        List<String> data = movieSearchService.getAllTypes();
+        Assertions.assertFalse(data.isEmpty());
     }
 }

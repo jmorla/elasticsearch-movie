@@ -1,7 +1,5 @@
 package com.jmorla.searchdemo.controller.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class MovieSearchRequest {
 
     private String title;

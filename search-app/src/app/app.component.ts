@@ -10,13 +10,13 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
   animations: [
     trigger('simpleFadeAnimation', [
 
-      state('in', style({opacity: 1})),
-      transition(':enter', [
-        style({opacity: 0}),
-        animate(600 )
-      ]),
-      transition(':leave',
-        animate(600, style({opacity: 0})))
+      // state('in', style({opacity: 1})),
+      // transition(':enter', [
+      //   style({opacity: 0}),
+      //   animate(600 )
+      // ]),
+      // transition(':leave',
+      //   animate(600, style({opacity: 0})))
     ])
   ]
 })
@@ -30,6 +30,10 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loadAllMovies();
+  }
+
+  loadAllMovies() {
     this.loading = true;
     this.movieService.getAllMovies({page: 0, size: 5})
     .subscribe({
@@ -44,5 +48,31 @@ export class AppComponent implements OnInit {
         setTimeout(() => { this.loading = false }, 400);
         setTimeout(() => { this.notFound = true }, 1100);
     }});
+  }
+
+  onSearch(request) {
+    if(request) {
+      this.movies = [];
+      this.loading = true;
+      this.movieService.getAllMoviesMatchCriteria(request, {page: 0, size: 10}).subscribe({
+        next: (movies) => {
+          setTimeout(() => {
+            this.loading = false;
+            this.movies = movies
+            this.notFound = false;
+            if(movies.length === 0) {
+              this.notFound = true;
+            }
+          }, 500)
+        },
+        error: () => {
+          setTimeout(() => { this.loading = false }, 400);
+          setTimeout(() => { this.notFound = true }, 1100);
+      }
+      })
+    }else {
+      this.movies = [];
+      this.loadAllMovies();
+    }
   }
 }
